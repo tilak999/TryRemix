@@ -1,5 +1,4 @@
-import type { V2_MetaFunction } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import type { V2_MetaFunction } from "@remix-run/cloudflare";
 import { useState } from "react";
 
 export const meta: V2_MetaFunction = () => {
@@ -9,20 +8,12 @@ export const meta: V2_MetaFunction = () => {
   ];
 };
 
-export const loader = () => {
-  return {
-    msg: "hello from the server"
-  }
-}
-
 export default function Index() {
-  const [test, settest] = useState(0)
-  const data = useLoaderData()
-
+  const [msg, setMsg] = useState(0)
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <button onClick={()=>settest(test+1)}>Test</button>
-      <h1>Welcome to Remix :: {data.msg}- {test}</h1>
+      <h1>Welcome to Remix - {msg}</h1>
+      <button onClick={()=>setMsg(msg+1)}>test</button>
       <ul>
         <li>
           <a
